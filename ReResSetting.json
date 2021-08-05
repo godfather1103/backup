@@ -1,0 +1,7 @@
+[
+	{
+		"req": "^https\\:\\/\\/(.+?)\\.googleapis\\.com\\/(.+?)$",
+		"res": "https://cdnjs.cloudflare.com/$2",
+		"checked": true
+	}
+]
