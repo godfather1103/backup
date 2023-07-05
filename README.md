@@ -6,5 +6,5 @@
 2. ReRes配置备份
 
 3. Gradle
-> gradle镜像中央仓库的脚本
+> gradle开启镜像中央仓库的脚本
 
