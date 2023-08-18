@@ -16,6 +16,8 @@ val urlMappings = mapOf(
     "https://plugins.gradle.org/m2" to "https://maven.aliyun.com/repository/gradle-plugin/"
 )
 
+val api = gradle.gradleVersion.split(".").map { it.toInt() }
+
 gradle.allprojects {
     buildscript {
         repositories.enableMirror()
@@ -25,7 +27,13 @@ gradle.allprojects {
 
 gradle.beforeSettings { 
     pluginManagement.repositories.enableMirror()
-    dependencyResolutionManagement.repositories.enableMirror()
+    // getDependencyResolutionManagement 从6.8版本开始提供，所以只能通过反射的方式来获取，避免低版本出现异常
+    Settings::class.java
+            .methods
+            .find { it.name == "getDependencyResolutionManagement" }
+            ?.invoke(this)?.let {
+                it.javaClass.methods.find { m -> m.name == "getRepositories" }?.invoke(it) as RepositoryHandler
+            }?.enableMirror()
 }
 
 allprojects {
