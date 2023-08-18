@@ -16,8 +16,6 @@ val urlMappings = mapOf(
     "https://plugins.gradle.org/m2" to "https://maven.aliyun.com/repository/gradle-plugin/"
 )
 
-val api = gradle.gradleVersion.split(".").map { it.toInt() }
-
 gradle.allprojects {
     buildscript {
         repositories.enableMirror()
