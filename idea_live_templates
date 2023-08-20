@@ -8,4 +8,5 @@
  * @author 作者: Jack Chu E-mail: chuchuanbao@gmail.com<BR>
  * 创建时间：$date$ $time$
  */
- $param$=groovyScript("def result = ''; def params =[];if (_1!=null&&_1.size()>0){params.addAll(_1)};if (_2!=null&&_2.size()>0){params.addAll(_2)}; for (def it in params) { result += '\\r\\n * @param: ' + it + ' 参数'; }; return result;", methodParameters(),kotlinFunctionName())
+ $param$=groovyScript("def result = ''; def params =[];if (_1!=null&&_1.size()>0){params.addAll(_1)};if (_2!=null&&_2.size()>0){params.addAll(_2)}; for (def it in params) { result += '\\r\\n * @param: ' + it + ' 参数'; }; return result;", methodParameters(), functionParameters())
+ 
