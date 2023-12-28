@@ -11,17 +11,18 @@ fun RepositoryHandler.enableMirror() {
 }
 
 val urlMappings = mapOf(
-    "https://repo.maven.apache.org/maven2" to "https://maven.aliyun.com/repository/public/",
+    // "https://repo.maven.apache.org/maven2" to "https://maven.aliyun.com/repository/public/",
+    "https://repo.maven.apache.org/maven2" to "https://mirrors.huaweicloud.com/repository/maven/",
     "https://dl.google.com/dl/android/maven2" to "https://maven.aliyun.com/repository/google/",
-    "https://jcenter.bintray.com" to "https://maven.aliyun.com/repository/jcenter/",
-    "https://plugins.gradle.org/m2" to "https://maven.aliyun.com/repository/gradle-plugin/"
+    // "https://plugins.gradle.org/m2" to "https://maven.aliyun.com/repository/gradle-plugin/",
+    "https://jcenter.bintray.com" to "https://maven.aliyun.com/repository/jcenter/"
 )
 
 gradle.allprojects {
     buildscript {
-        repositories.enableMirror()
+        repositories?.enableMirror()
     }
-    repositories.enableMirror()
+    repositories?.enableMirror()
 }
 
 gradle.beforeSettings { 
@@ -33,15 +34,4 @@ gradle.beforeSettings {
             ?.invoke(this)?.let {
                 it.javaClass.methods.find { m -> m.name == "getRepositories" }?.invoke(it) as RepositoryHandler
             }?.enableMirror()
-}
-
-allprojects {
-    configurations.all {
-        resolutionStrategy {
-            // 变更中版本的依赖强制更新(快照版或声明为变更版本的依赖)
-            cacheChangingModulesFor(24, TimeUnit.HOURS)
-            // 动态版本声明的依赖缓存1小时(区间声明的依赖)
-            cacheDynamicVersionsFor(24, TimeUnit.HOURS)
-        }
-    }
 }
