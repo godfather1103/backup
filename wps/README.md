@@ -1,1 +1,1 @@
-WPS的DISPIMG函数解析示例
+WPS的DISPIMG函数提取图片示例
