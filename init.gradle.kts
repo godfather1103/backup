@@ -11,8 +11,8 @@ fun RepositoryHandler.enableMirror() {
 }
 
 val urlMappings = mapOf(
-    // "https://repo.maven.apache.org/maven2" to "https://maven.aliyun.com/repository/public/",
-    "https://repo.maven.apache.org/maven2" to "https://mirrors.huaweicloud.com/repository/maven/",
+    "https://repo.maven.apache.org/maven2" to "https://maven.aliyun.com/repository/public/",
+    // "https://repo.maven.apache.org/maven2" to "https://mirrors.huaweicloud.com/repository/maven/",
     "https://dl.google.com/dl/android/maven2" to "https://maven.aliyun.com/repository/google/",
     // "https://plugins.gradle.org/m2" to "https://maven.aliyun.com/repository/gradle-plugin/",
     "https://jcenter.bintray.com" to "https://maven.aliyun.com/repository/jcenter/"
